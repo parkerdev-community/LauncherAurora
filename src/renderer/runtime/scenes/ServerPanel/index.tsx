@@ -1,17 +1,15 @@
-import { Profile, Server } from '@aurora-launcher/core';
+import { Server } from '@aurora-launcher/core';
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
 
+import { LoadProgress } from '../../../../common/types';
 import If from '../../components/If';
 import { useTitlebar } from '../../components/TitleBar/hooks';
-import classes from './index.module.sass';
-import { LoadProgress } from '../../../../common/types';
 import { usePingServer } from '../../hooks/pingServer';
+import classes from './index.module.sass';
 
 // TODO Refactoring scene
 export default function ServerPanel() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [selectedProfile, setSelectedProfile] = useState({} as Profile);
-    const [selectedServer, setSelectedServer] = useState({} as Server);
+    const [selectedServer, setSelectedServer] = useState<Server>();
     const players = usePingServer(selectedServer);
 
     const [showConsole, setShowConsole] = useState(false);
@@ -25,7 +23,6 @@ export default function ServerPanel() {
     const { showTitlebarBackBtn, hideTitlebarBackBtn } = useTitlebar();
 
     useEffect(() => {
-        launcherAPI.scenes.serverPanel.getProfile().then(setSelectedProfile);
         launcherAPI.scenes.serverPanel.getServer().then(setSelectedServer);
 
         showTitlebarBackBtn();
@@ -80,7 +77,7 @@ export default function ServerPanel() {
     return (
         <div className={classes.window}>
             <div className={classes.info}>
-                <div className={classes.title}>{selectedServer.title}</div>
+                <div className={classes.title}>{selectedServer?.title}</div>
                 <div className={classes.status}>
                     <div className={classes.gamers}>
                         Игроков

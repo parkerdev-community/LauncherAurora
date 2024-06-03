@@ -2,10 +2,11 @@ import { Profile, Server } from '@aurora-launcher/core';
 import { Service } from 'typedi';
 
 import { APIManager } from '../api/APIManager';
+import { GameWindow } from './GameWindow';
+import { LibrariesMatcher } from './LibrariesMatcher';
 import { Starter } from './Starter';
 import { Updater } from './Updater';
 import { Watcher } from './Watcher';
-import { GameWindow } from './GameWindow';
 
 @Service()
 export class GameService {
@@ -45,10 +46,24 @@ export class GameService {
             return;
         }
 
+        const libraries = profile.libraries.filter((library) =>
+            LibrariesMatcher.match(library.rules),
+        );
+
         try {
-            await this.gameUpdater.validateClient(profile);
-            await this.gameStarter.start(profile);
-            await this.gameWatcher.watch();
+            await this.gameUpdater.validateClient(profile, libraries);
+
+            const { nativesFiles, gameProcess } = await this.gameStarter.start(
+                profile,
+                libraries,
+            );
+
+            await this.gameWatcher.watch(
+                profile,
+                libraries,
+                nativesFiles,
+                gameProcess,
+            );
         } catch (error) {
             this.gameWindow.sendToConsole(`${error}`);
             this.gameWindow.stopGame();

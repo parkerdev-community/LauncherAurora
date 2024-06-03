@@ -3,6 +3,10 @@ export const EVENTS = {
         HIDE: 'window:hide',
         CLOSE: 'window:close',
     },
+    RPC: {
+        UPDATE_ACTIVITY: 'discordrpc:updateactivty',
+        CLEAR_ACTIVITY: 'discordrpc:clearactivity'
+    },
     SCENES: {
         LOGIN: {
             AUTH: 'scenes:login:auth',
@@ -10,6 +14,7 @@ export const EVENTS = {
         SERVERS_LIST: {
             GET_SERVERS: 'scenes:serversList:getServers',
             SELECT_SERVER: 'scenes:serversList:selectServer',
+            PING_SERVER: 'scenes:serversList:pingServer',
         },
         SERVER_PANEL: {
             GET_PROFILE: 'scenes:serverPanel:getProfile',
