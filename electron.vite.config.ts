@@ -1,6 +1,6 @@
-import { join } from 'path';
+import { join } from 'path'
 
-import { defineConfig, swcPlugin } from 'electron-vite';
+import { defineConfig, swcPlugin } from 'electron-vite'
 
 const toDir = (dir: string) => join(__dirname, dir);
 
@@ -16,6 +16,30 @@ export default defineConfig({
                     find: '@config',
                     replacement: toDir('config.ts'),
                 },
+                {
+                    find: '@',
+                    replacement: toDir('./src/renderer'),
+                },
+                {
+                    find: '@assets',
+                    replacement: toDir('./src/renderer/assets'),
+                },
+                {
+                    find: '@components',
+                    replacement: toDir('./src/renderer/components'),
+                },
+                {
+                    find: '@hooks',
+                    replacement: toDir('./src/renderer/hooks'),
+                },
+                {
+                    find: '@utils',
+                    replacement: toDir('./src/renderer/utils'),
+                },
+                {
+                    find: '@pages',
+                    replacement: toDir('./src/renderer/pages'),
+                }
             ],
         },
     },
