@@ -9,7 +9,7 @@ import { autoUpdater } from 'electron-updater';
 import { Service } from 'typedi';
 
 import { EVENTS } from '../../common/channels';
-import logo from '../../renderer/runtime/assets/images/logo.png?asset';
+import logo from '../../renderer/app/images/logo.png?asset';
 import { PlatformHelper } from '../helpers/PlatformHelper';
 
 const isDev = process.env.DEV === 'true' && !app.isPackaged;
@@ -104,8 +104,8 @@ export class LauncherWindow {
 
         mainWindow.webContents.setWindowOpenHandler((data) => {
             shell.openExternal(data.url);
-            return { action: "deny" };
-          });
+            return { action: 'deny' };
+        });
 
         // loading renderer code (runtime)
         if (isDev && process.env['ELECTRON_RENDERER_URL'])

@@ -1,12 +1,13 @@
-import { join } from 'path'
+import { join } from 'path';
 
-import { defineConfig, swcPlugin } from 'electron-vite'
+import { defineConfig, swcPlugin } from 'electron-vite';
+import vitePluginSvgr from 'vite-plugin-svgr';
 
 const toDir = (dir: string) => join(__dirname, dir);
 
 export default defineConfig({
     main: {
-        plugins: [swcPlugin()],
+        plugins: [swcPlugin(), vitePluginSvgr()],
         build: {
             sourcemap: true,
         },
@@ -26,7 +27,7 @@ export default defineConfig({
                 },
                 {
                     find: '@components',
-                    replacement: toDir('./src/renderer/components'),
+                    replacement: toDir('./renderer/components'),
                 },
                 {
                     find: '@hooks',
@@ -39,7 +40,7 @@ export default defineConfig({
                 {
                     find: '@pages',
                     replacement: toDir('./src/renderer/pages'),
-                }
+                },
             ],
         },
     },

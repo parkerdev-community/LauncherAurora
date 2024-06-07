@@ -1,3 +1,3 @@
-export * from './LoginPage'
-export * from './ServerPanelPage'
-export * from './ServersListPage'
+export * from './Login';
+export * from './ServerPanel';
+export * from './Servers';

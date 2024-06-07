@@ -1,0 +1,22 @@
+.error {
+    height: calc(100vh - 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block {
+    flex-flow: column nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block h2 {
+    margin-bottom: 10px;
+}
+
+.block p {
+    max-width: 450px;
+    text-align: center;
+}
