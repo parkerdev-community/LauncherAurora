@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import logo from '../../app/images/logo.png';
 import { Button, Form, Input } from '../../components/ui';
-import { useModal, useTopBar } from '../../hooks';
+import { useModal, useTilteBar } from '../../hooks';
 import classes from './index.module.scss';
 
 interface userData {
@@ -15,7 +15,7 @@ interface userData {
 export const LoginPage = () => {
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const { showTopBarUser, setTopBarUserText } = useTopBar();
+    const { showTilteBarUser, setTilteBarUserText } = useTilteBar();
     const navigate = useNavigate();
     const { showModal } = useModal();
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -33,12 +33,12 @@ export const LoginPage = () => {
                 .auth(login, password)
                 .then((user: userData) => {
                     localStorage.setItem('userData', JSON.stringify(user));
-                    setTopBarUserText(user.username);
+                    setTilteBarUserText(user.username);
                 });
         } catch (error) {
             console.error(error);
         }
-        showTopBarUser();
+        showTilteBarUser();
         navigate('/servers-list');
     };
 

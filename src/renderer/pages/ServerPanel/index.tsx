@@ -1,10 +1,11 @@
 import { Server } from '@aurora-launcher/core';
 import { MutableRefObject, useEffect, useRef, useState } from 'react';
+
+import { LoadProgress } from '../../../common/types';
+import { ConditionalRenderer } from '../../components';
+import { usePingServer, useTilteBar } from '../../hooks';
+import { bytesToSize } from '../../utils';
 import classes from './index.module.scss';
-import { usePingServer, useTopBar } from '../../hooks'
-import { LoadProgress } from '../../../common/types'
-import { ConditionalRenderer } from '../../components'
-import { bytesToSize } from '../../utils'
 
 // TODO Refactoring scene
 export const ServerPanelPage = () => {
@@ -19,16 +20,16 @@ export const ServerPanelPage = () => {
     const progressLine = useRef() as MutableRefObject<HTMLDivElement>;
     const progressInfo = useRef() as MutableRefObject<HTMLDivElement>;
 
-    const { showTopBarBackBtn, hideTopBarBackBtn } = useTopBar();
+    const { showTilteBarBackBtn, hideTilteBarBackBtn } = useTilteBar();
 
     useEffect(() => {
         launcherAPI.scenes.serverPanel.getServer().then(setSelectedServer);
 
-        showTopBarBackBtn();
+        showTilteBarBackBtn();
     }, []);
 
     const startGame = () => {
-			hideTopBarBackBtn();
+        hideTilteBarBackBtn();
         setShowConsole(true);
         consoleRef.current?.replaceChildren();
         setGameStarted(true);
@@ -41,7 +42,7 @@ export const ServerPanelPage = () => {
 
     const stopGame = () => {
         setGameStarted(false);
-        showTopBarBackBtn();
+        showTilteBarBackBtn();
     };
 
     const textToConsole = (string: string) => {
@@ -116,4 +117,4 @@ export const ServerPanelPage = () => {
             </div>
         </div>
     );
-}
+};

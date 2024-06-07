@@ -3,16 +3,16 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ServerButton, SkinView } from '../../components';
-import { useTopBar } from '../../hooks';
+import { useTilteBar } from '../../hooks';
 import classes from './index.module.scss';
 
 export const ServersPage = () => {
-    const { hideTopBarBackBtn } = useTopBar();
+    const { hideTilteBarBackBtn } = useTilteBar();
     const [servers, setServers] = useState<Server[]>([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        hideTopBarBackBtn();
+        hideTilteBarBackBtn();
         console.log(
             launcherAPI.scenes.serversList.getServers().then(setServers),
         );
@@ -38,4 +38,4 @@ export const ServersPage = () => {
             </div>
         </div>
     );
-}
+};

@@ -1,10 +1,10 @@
-.topbar,
-.topbar > div,
+.titlebar,
+.titlebar > div,
 .user {
     display: flex;
     align-items: center;
 }
-.topbar {
+.titlebar {
     padding: 8px;
     -webkit-app-region: drag;
     justify-content: space-between;

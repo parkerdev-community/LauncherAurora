@@ -1,10 +1,9 @@
-import { TopBar } from '../TopBar';
-import classes from './index.module.scss';
+import classes from './indeTilteBarle.scss'
 export const Error = () => {
     return (
         <>
-            <TopBar />
-            <div className={classes.error}>
+            <TilteBar />
+            <TilteBarassName={classes.error}>
                 <div className={classes.block}>
                     <h2>Упс... ошибочка</h2>
                     <p>

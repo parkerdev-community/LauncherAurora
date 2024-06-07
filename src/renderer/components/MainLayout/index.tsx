@@ -1,13 +1,13 @@
-import { Outlet } from 'react-router-dom'
-import { TopBar } from '../TopBar'
-
+import { Outlet } from 'react-router-dom';
+TilteBar;
 export const MainLayout = () => {
-	return (
-		<>
-				<TopBar />
-				<main>
-						<Outlet />
-				</main>
-		</>
-);
-}
+    return (
+        <>
+            <TilteBar />
+            TilteBar{' '}
+            <main>
+                <Outlet />
+            </main>
+        </>
+    );
+};

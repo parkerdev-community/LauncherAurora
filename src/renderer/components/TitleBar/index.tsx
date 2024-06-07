@@ -1,18 +1,22 @@
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
-import { topBarBackBtn, topBarUser, topBarTitle } from '../../store/topBarAtom';
+import {
+    TilteBarBackBtn,
+    TilteBarTitle,
+    TilteBarUser,
+} from '../../store/topBarAtom';
 import { ConditionalRenderer } from '../ConditionalRenderer';
 import { Button } from '../ui';
 import classes from './index.module.scss';
 
-export const TopBar = () => {
-    const backBtn = useRecoilValue(topBarBackBtn);
-    const title = useRecoilValue(topBarTitle);
-    const user = useRecoilValue(topBarUser);
+export const TilteBar = () => {
+    const backBtn = useRecoilValue(TilteBarBackBtn);
+    const title = useRecoilValue(TilteBarTitle);
+    const user = useRecoilValue(TilteBarUser);
     const navigate = useNavigate();
     return (
-        <div className={classes.topbar}>
+        <div className={classes.titlebar}>
             <div>
                 <ConditionalRenderer condition={backBtn.show}>
                     <Button
@@ -66,7 +70,7 @@ export const TopBar = () => {
                                 ' ',
                             )}
                         >
-                             {user.username}
+                            {user.username}
                         </div>
                     </div>
                 </ConditionalRenderer>

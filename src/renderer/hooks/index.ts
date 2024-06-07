@@ -1,3 +1,3 @@
-export * from './pingServer'
-export * from './useTopBar'
-export * from './useModal'
+export * from './pingServer';
+export * from './useModal';
+export * from './useTitleBar';

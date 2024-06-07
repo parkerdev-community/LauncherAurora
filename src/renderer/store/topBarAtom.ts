@@ -1,22 +1,22 @@
 import { atom } from 'recoil';
 
-export const topBarBackBtn = atom({
-    key: 'topbar.backBtn',
+export const TilteBarBackBtn = atom({
+    key: 'titlebar.backBtn',
     default: {
         show: false,
     },
 });
 
-export const topBarTitle = atom({
-    key: 'topbar.title',
+export const TilteBarTitle = atom({
+    key: 'titlebar.title',
     default: {
         show: true,
         text: 'AuroraLauncher v0.0.4',
     },
 });
 
-export const topBarUser = atom({
-    key: 'topbar.user',
+export const TilteBarUser = atom({
+    key: 'titlebar.user',
     default: {
         show: false,
         username: 'Test',
