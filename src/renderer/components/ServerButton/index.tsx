@@ -1,7 +1,7 @@
 import { Server } from '@aurora-launcher/core';
+
+import { usePingServer } from '../../hooks';
 import classes from './index.module.scss';
-import { usePingServer } from '../../hooks'
-import { Button } from '../ui'
 
 interface ServerButtonProps {
     onClick: () => void;
@@ -12,7 +12,7 @@ export function ServerButton({ onClick, server }: ServerButtonProps) {
     const { online, max } = usePingServer(server);
 
     return (
-        <Button className={classes.button} onClick={onClick}>
+        <button className={classes.button} onClick={onClick}>
             <span className={classes.title}>{server.title}</span>
             <span className={classes.online}>
                 {online} / {max}
@@ -36,6 +36,6 @@ export function ServerButton({ onClick, server }: ServerButtonProps) {
                     style={{ width: `${(online / max) * 100}%` }}
                 ></div>
             </div>
-        </Button>
+        </button>
     );
 }

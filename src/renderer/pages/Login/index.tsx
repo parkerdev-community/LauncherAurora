@@ -15,7 +15,7 @@ interface userData {
 export const LoginPage = () => {
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const { showTopBarUser } = useTopBar();
+    const { showTopBarUser, setTopBarUserText } = useTopBar();
     const navigate = useNavigate();
     const { showModal } = useModal();
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -33,6 +33,7 @@ export const LoginPage = () => {
                 .auth(login, password)
                 .then((user: userData) => {
                     localStorage.setItem('userData', JSON.stringify(user));
+                    setTopBarUserText(user.username);
                 });
         } catch (error) {
             console.error(error);

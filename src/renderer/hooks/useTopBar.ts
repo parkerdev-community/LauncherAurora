@@ -1,12 +1,11 @@
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil'
 
-import { topBarBackBtn, topBarTitle } from '../store/topBarAtom';
-import { userAtom } from '../store/userAtom';
+import { topBarBackBtn, topBarUser, topBarTitle } from '../store/topBarAtom'
 
 export function useTopBar() {
     const setTopbarBackBtnState = useSetRecoilState(topBarBackBtn);
     const setTopBarTitleState = useSetRecoilState(topBarTitle);
-    const setTopBarrUserState = useSetRecoilState(userAtom);
+    const setTopBarUserState = useSetRecoilState(topBarUser);
 
     function showTopBarBackBtn() {
         setTopbarBackBtnState({ show: true });
@@ -25,12 +24,17 @@ export function useTopBar() {
     }
 
     function showTopBarUser() {
-        setTopBarrUserState((state) => ({ ...state, show: true }));
+        setTopBarUserState((state) => ({ ...state, show: true }));
     }
 
     function hideTopBarUser() {
-        setTopBarrUserState((state) => ({ ...state, show: false }));
+        setTopBarUserState((state) => ({ ...state, show: false }));
     }
+
+    function setTopBarUserText(username: string) {
+        setTopBarUserText((state) => ({ ...state, username }));
+    }
+
     return {
         showTopBarBackBtn,
         hideTopBarBackBtn,
@@ -38,5 +42,6 @@ export function useTopBar() {
         hideTopBarTitle,
         showTopBarUser,
         hideTopBarUser,
+        setTopBarUserText
     };
 }

@@ -2,12 +2,10 @@ import { MutableRefObject, useEffect, useRef } from 'react';
 import { IdleAnimation, SkinViewer } from 'skinview3d';
 
 import defaultSkin from '../../app/images/steve.png'
-import { useRecoilValue } from 'recoil'
-import { userAtom } from '../../store/userAtom'
 
 export const SkinView = () => {
     const skinCanvas = useRef() as MutableRefObject<HTMLCanvasElement>;
-		const user = useRecoilValue(userAtom)
+
     useEffect(() => {
         const skinViewer = new SkinViewer({
             canvas: skinCanvas.current,
@@ -23,7 +21,9 @@ export const SkinView = () => {
         skinViewer.animation = new IdleAnimation();
 
         // Поддержка загрузки и отображения скина
-        const { skinUrl, capeUrl, isAlex } = user.user
+        const { skinUrl, capeUrl, isAlex } = JSON.parse(
+            localStorage.getItem('userData') || '{}',
+        );
 				
         if (skinUrl) {
             skinViewer.loadSkin(skinUrl);

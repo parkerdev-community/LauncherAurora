@@ -1,9 +1,10 @@
 import { Server } from '@aurora-launcher/core';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import classes from './index.module.scss';
+
 import { ServerButton, SkinView } from '../../components';
 import { useTopBar } from '../../hooks';
+import classes from './index.module.scss';
 
 export const ServersPage = () => {
     const { hideTopBarBackBtn } = useTopBar();
@@ -12,9 +13,11 @@ export const ServersPage = () => {
 
     useEffect(() => {
         hideTopBarBackBtn();
-        launcherAPI.scenes.serversList.getServers().then(setServers);
+        console.log(
+            launcherAPI.scenes.serversList.getServers().then(setServers),
+        );
     }, []);
-
+    console.log(servers);
     const selectServer = async (server: Server) => {
         await launcherAPI.scenes.serversList.selectServer(server);
         navigate('/server-panel');
@@ -35,4 +38,4 @@ export const ServersPage = () => {
             </div>
         </div>
     );
-};
+}
