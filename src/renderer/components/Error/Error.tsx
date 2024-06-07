@@ -1,9 +1,10 @@
+import { TilteBar } from '../TitleBar'
 import classes from './indeTilteBarle.scss'
 export const Error = () => {
     return (
         <>
             <TilteBar />
-            <TilteBarassName={classes.error}>
+            <div className={classes.error}>
                 <div className={classes.block}>
                     <h2>Упс... ошибочка</h2>
                     <p>
